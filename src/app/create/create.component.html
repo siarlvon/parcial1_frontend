@@ -1,0 +1,34 @@
+<div class="container mt-5">
+
+    <!-- show erromsg -->
+    <div *ngIf="errormsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{errormsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div *ngIf="successmsg" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{successmsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+    <form [formGroup]="medicamentosForm">
+        <div class="col-lg-4 mt-2">
+            <input type="text" class="form-control" formControlName="nombre"
+                placeholder="Ingrese el nombre del medicamento: ">
+        </div>
+
+        <div class="col-lg-4 mt-2">
+            <input type="text" class="form-control" formControlName="cantidad"
+                placeholder="Ingrese la cantidad/tableta/dosis de medicamento(s): ">
+        </div>
+
+        <div class="col-lg-4" *ngIf="!getparamid" (click)="medicamentosSubmit()">
+            <button class="btn btn-primary btn-sm">Crear</button>
+        </div>
+
+        <div class="col-lg-4" *ngIf="getparamid" (click)="medicamentosUpdate()">
+            <button class="btn btn-dark btn-sm">Editar</button>
+        </div>
+    </form>
+</div>

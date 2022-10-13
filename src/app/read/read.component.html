@@ -1,0 +1,33 @@
+<div class="container mt-5">
+
+    <!-- showwmessage -->
+    <div *ngIf="successmsg" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{successmsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <table class="table caption-top">
+        <caption>Lista de medicamentos</caption>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Editar</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr *ngFor='let us of readData'>
+                <th scope="row">{{us.id_medicamento}}</th>
+                <td>{{us.nombre}}</td>
+                <td>{{us.cantidad}}</td>
+                <td>
+                    <button class="btn btn-sm btn-danger" (click)="deleteID(us.id_medicamento)">Eliminar</button>
+                    &nbsp;
+                    <a [routerLink]="['/create', us.id_medicamento]" class="btn btn-sm btn-success">Editar</a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
